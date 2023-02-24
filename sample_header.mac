@@ -1,0 +1,19 @@
+###############################################
+# sample name :  pos1
+###############################################
+_zpos = -39.13
+_ompos = 0.5+0.03
+_xpos = -43.9
+_name = "T4_3gpl"
+
+umv x _xpos
+umv om _ompos
+umv detz 0
+
+#direct beam
+_comment = _name "_pos1"
+pilatus_set_expname(_comment);
+pilatus_set_comment ("empty_beam_pos1")
+umv z -45
+umv bsx -7
+pilatus_exp 2

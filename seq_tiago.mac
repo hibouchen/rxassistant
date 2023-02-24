@@ -1,0 +1,611 @@
+## Reflectometry
+## The sample must be already aligned to the beam
+## Ex :
+## 200 points at 0.01 degree/point = 2 degrees
+## Exposure time = 1 second
+
+#no longer two shifted images per angle
+lineraser_seton 0
+pilatus_set_dirbase('inhouse/2022/2022-11-30-TOC_RX')
+
+# open shutter and remove filter
+so
+filterout
+###############################################
+# Echantillon1 pos1
+###############################################
+_zpos=-39.13
+_ompos=0.5+0.03
+_xpos=-43.9
+_name = "T4_3gpl"
+
+umv x _xpos
+umv om _ompos
+umv detz 0
+
+#direct beam
+_comment = _name "_pos1"
+pilatus_set_expname(_comment);
+pilatus_set_comment ("empty_beam_pos1")
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+#first measurement
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+umvr om 0.015
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+###############################################
+# second position for the detector
+###############################################
+
+umv detz 14
+umv om 0.0
+_comment=_name "_pos2"
+pilatus_set_expname(_comment)
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+# move omega to 0
+umv om _ompos
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+pilatus_set_comment ("empty_beam_pos2")
+umv om 0
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+
+
+###############################################
+#Echantillon2 pos1
+###############################################
+_zpos=-39.11
+_ompos=0.2+0.03
+_xpos=-25.9
+_name = "T10_5gpl"
+
+umv x _xpos
+umv om _ompos
+umv detz 0
+
+#direct beam
+_comment = _name "_pos1"
+pilatus_set_expname(_comment);
+pilatus_set_comment ("empty_beam_pos1")
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+#first measurement
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+umvr om 0.015
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+###############################################
+# second position for the detector
+###############################################
+
+umv detz 14
+umv om 0.0
+_comment=_name "_pos2"
+pilatus_set_expname(_comment)
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+# move omega to 0
+umv om _ompos
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+pilatus_set_comment ("empty_beam_pos2")
+umv om 0
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+
+###############################################
+#Echantillon3 pos1
+###############################################
+_zpos=-39.28
+_ompos=0.06+0.03
+_xpos=-7.8
+_name = "T10_4gpl"
+
+umv x _xpos
+umv om _ompos
+umv detz 0
+
+#direct beam
+_comment = _name "_pos1"
+pilatus_set_expname(_comment);
+pilatus_set_comment ("empty_beam_pos1")
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+#first measurement
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+umvr om 0.015
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+###############################################
+# second position for the detector
+###############################################
+
+umv detz 14
+umv om 0.0
+_comment=_name "_pos2"
+pilatus_set_expname(_comment)
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+# move omega to 0
+umv om _ompos
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+pilatus_set_comment ("empty_beam_pos2")
+umv om 0
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+
+
+###############################################
+#Echantillon4 pos1
+###############################################
+_zpos=-39.09
+_ompos=0.01+0.03
+_xpos=10
+_name = "T7_3gpl"
+
+umv x _xpos
+umv om _ompos
+umv detz 0
+
+#direct beam
+_comment = _name "_pos1"
+pilatus_set_expname(_comment);
+pilatus_set_comment ("empty_beam_pos1")
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+#first measurement
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+umvr om 0.015
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+###############################################
+# second position for the detector
+###############################################
+
+umv detz 14
+umv om 0.0
+_comment=_name "_pos2"
+pilatus_set_expname(_comment)
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+# move omega to 0
+umv om _ompos
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+pilatus_set_comment ("empty_beam_pos2")
+umv om 0
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+
+
+###############################################
+#Echantillon5 pos1
+###############################################
+_zpos=-39.45
+_ompos=0.47+0.03
+_xpos=28.1
+_name = "T7_2gpl"
+
+umv x _xpos
+umv om _ompos
+umv detz 0
+
+#direct beam
+_comment = _name "_pos1"
+pilatus_set_expname(_comment);
+pilatus_set_comment ("empty_beam_pos1")
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+#first measurement
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+umvr om 0.015
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+###############################################
+# second position for the detector
+###############################################
+
+umv detz 14
+umv om 0.0
+_comment=_name "_pos2"
+pilatus_set_expname(_comment)
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+# move omega to 0
+umv om _ompos
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+pilatus_set_comment ("empty_beam_pos2")
+umv om 0
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+
+
+###############################################
+#Echantillon6 pos1
+###############################################
+_zpos=-39.27
+_ompos=-0.03+0.03
+_xpos=45.9
+_name = "Wafer_nu"
+
+umv x _xpos
+umv om _ompos
+umv detz 0
+
+#direct beam
+_comment = _name "_pos1"
+pilatus_set_expname(_comment);
+pilatus_set_comment ("empty_beam_pos1")
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+#first measurement
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+umvr om 0.015
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+###############################################
+# second position for the detector
+###############################################
+
+umv detz 14
+umv om 0.0
+_comment=_name "_pos2"
+pilatus_set_expname(_comment)
+pilatus_set_comment (_comment)
+umv z _zpos
+bstopin
+
+# move omega to 0
+umv om _ompos
+
+#scan number
+_N1 = 200
+#delt Theta
+_d1 = 0.005
+#acquisition time
+_t1 = 1
+
+for (j1=0;j1<_N1;j1++) {
+    pilatus_exp _t1
+    umvr om _d1
+    }
+
+#scan number
+_N2 = 118
+#delt Theta
+_d2 = 0.017
+#acquisition time
+_t2 = 30
+
+for (j2=0;j2<_N2;j2++) {
+    pilatus_exp _t2
+    umvr om _d2
+    }
+
+pilatus_set_comment ("empty_beam_pos2")
+umv om 0
+umv z -45
+umv bsx -7
+pilatus_exp 2
+
+
+
+#####################################################
+#end of sequence
+###################################################
+sc
+filterin
+#set detector heigth back to its initial position
+umv detz 0
+bstopin
+
+
+#go back to 0 deg incident angle
+umv om 0
+
+pilatus_set_dirbase('inhouse/2022')
+pilatus_set_expname("2022-11-30-TOC_RX")
+#####################################################
+###################################################

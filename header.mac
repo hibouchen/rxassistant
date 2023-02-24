@@ -1,0 +1,17 @@
+## Reflectometry
+## The sample must be already aligned to the beam
+## Ex :
+## 200 points at 0.01 degree/point = 2 degrees
+## Exposure time = 1 second
+
+## date : 
+
+#no longer two shifted images per angle
+lineraser_seton 0
+
+# open shutter and remove filter
+so
+filterout
+
+# set the image directory
+pilatus_set_dirbase('inhouse/2022/2022-11-30-TOC_RX')

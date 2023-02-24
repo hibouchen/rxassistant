@@ -1,0 +1,11 @@
+#scan number
+_N = 200
+#delta Theta
+_d = 0.005
+#acquisition time
+_t = 1
+
+for (j=0;j<_N;j++) {
+    pilatus_exp _t
+    umvr om _d
+    }
