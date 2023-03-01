@@ -215,48 +215,6 @@ class MainWindow(QtWidgets.QMainWindow):
         self.canvas.plot(theta, flux=pconf['flux'], dtheta=pconf['dtheta'], acq_time=acq_time)
 
 
-class AcquisiotnTable(QtWidgets.QWidget):
-
-    def __init__(self):
-        super().__init__()
-        self.table = QtWidgets.QTableWidget()
-        self.table.setColumnCount(3)
-        # self.table.setRowCount(2)
-        self.table.setHorizontalHeaderLabels(["N", "step (°)", "t (s)"])
-        self.addStep()
-        layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(self.table)
-        self.setLayout(layout)
-
-    def addStep(self):
-        n = self.table.rowCount()
-        print(n)
-        self.table.insertRow(n)
-        edit = QtWidgets.QLineEdit("100")
-        edit.setValidator(QtGui.QIntValidator())
-        self.table.setCellWidget(n,0,edit)
-        edit = QtWidgets.QLineEdit("0.01")
-        edit.setValidator(QtGui.QDoubleValidator())
-        self.table.setCellWidget(n, 1, edit)
-        edit = QtWidgets.QLineEdit("1")
-        edit.setValidator(QtGui.QDoubleValidator())
-        self.table.setCellWidget(n, 2, edit)
-        self.table.setItem(n,0, QtWidgets.QTableWidgetItem("100"))
-        self.table.setItem(n,1, QtWidgets.QTableWidgetItem("0.01"))
-        self.table.setItem(n,2, QtWidgets.QTableWidgetItem("1"))
-
-
-    def get_parameters(self):
-        nList = []
-        dthetaList = []
-        tList = []
-        for i in range(self.table.rowCount()):
-            text = self.table.item(i, 0).text()
-            nList.append(int(self.table.item(i, 0).text()))
-            dthetaList.append(float(self.table.item(i, 1).text()))
-            tList.append()
-
-
 class AcquisitionWidget(QtWidgets.QWidget):
     parametersChanged = QtCore.pyqtSignal(list)
 
@@ -319,7 +277,6 @@ class AcquisitionWidget(QtWidgets.QWidget):
         self.parametersChanged.emit([theta, t])
         self.totalTimeLineEdit.setText(str(np.sum(t)))
         self.thetaEndLineEdit.setText(str(np.max(theta)))
-
 
 
 class AcquisitionTableModel(QtCore.QAbstractTableModel):
@@ -399,6 +356,22 @@ class AcquisitionTableModel(QtCore.QAbstractTableModel):
             t.append(np.ones(self._data[i][0])*self._data[i][2])
         return np.concatenate(t)
 
+    def get_parameters(self):
+        """
+        :return: the parameters of the table as three list [intervals], [dtheta] and [t] or None if parameters are not complete
+        :rtype list, list, list
+        """
+        nList = []
+        dthetaList = []
+        tList = []
+        try:
+            for i in range(self.rowCount()):
+                nList.append(int(self._data[i][0]))
+                dthetaList.append(float(self._data[i][1]))
+                tList.append(float(self._data[i][2]))
+            return nList, dthetaList, tList
+        except ValueError:
+            return None
 
 
 if __name__ == "__main__":
